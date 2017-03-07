@@ -10,6 +10,14 @@ import Cocoa
 
 typealias JSONDict = [String: Any]
 
+extension Double {
+    
+    var ns: NSNumber {
+        return NSNumber(value: self)
+    }
+    
+}
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -37,13 +45,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var errorsLabel: NSTextField!
     @IBOutlet weak var succesLabel: NSTextField!
-    @IBOutlet weak var percentLabel: NSTextField!
-    @IBOutlet weak var triesLabel: NSTextField!
+    @IBOutlet weak var attemptsLabel: NSTextField!
     @IBOutlet weak var urlField: NSTextField!
     @IBOutlet weak var fireButton: NSButton!
     @IBOutlet weak var stopButton: NSButton!
     
-    var tries: Float = 0
+    var totalAttempts: Float = 0
 
     var errors: Float = 0 {
         didSet {
@@ -84,26 +91,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         urlField.stringValue = savedInput ?? ""
     }
     
-    func updateInfo() {
-            
-            errorsLabel.stringValue = "\(Int(errors))"
-            succesLabel.stringValue = "\(Int(success))"
-            triesLabel.stringValue = "\(Int(tries))"
-            
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .percent
-            let percentage = formatter.string(from: NSNumber(value: success/tries))!
-            percentLabel.stringValue = "\(percentage)"
+    private lazy var percentFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
         
+        return formatter
+    }()
+    
+    func updateInfo() {
+        errorsLabel.stringValue = "\(Int(errors))"
+        attemptsLabel.stringValue = "\(Int(totalAttempts))"
+        
+        if let percentage = percentFormatter.string(from: Double(success/totalAttempts).ns) {
+            succesLabel.stringValue = "\(Int(success)) (\(percentage))"
+        } else {
+            succesLabel.stringValue = "\(Int(success))"
+        }
     }
+    
     @IBAction func fire(_ sender: Any) {
-        tries = 0
+        totalAttempts = 0
         errors = 0
         success = 0
         errorsLabel.stringValue = ""
         succesLabel.stringValue = ""
-        triesLabel.stringValue = ""
-        percentLabel.stringValue = ""
+        attemptsLabel.stringValue = ""
         shouldStop = false
         probe()
         fireButton.isEnabled = false
@@ -121,7 +133,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         savedInput = urlField.stringValue
         
         if shouldStop { return }
-        tries += 1
+        totalAttempts += 1
         let url = URL(string: urlField.stringValue)!
         
         let listResource = Resource<JSONDict>(url: url, parse: { data in

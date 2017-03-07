@@ -17,12 +17,11 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Prober" customModuleProvider="target">
             <connections>
+                <outlet property="attemptsLabel" destination="fhk-FB-fJZ" id="app-B6-hbH"/>
                 <outlet property="errorsLabel" destination="xdw-Y8-AJS" id="3X8-kK-Zdd"/>
                 <outlet property="fireButton" destination="npe-Ks-dgN" id="RTN-Mo-UaV"/>
-                <outlet property="percentLabel" destination="B1f-ud-GL1" id="aLE-fl-AXa"/>
                 <outlet property="stopButton" destination="fns-Xs-a96" id="wq2-dx-lWX"/>
                 <outlet property="succesLabel" destination="64h-dO-kXL" id="wTh-Lf-kOh"/>
-                <outlet property="triesLabel" destination="fhk-FB-fJZ" id="qmq-Kw-a65"/>
                 <outlet property="urlField" destination="FQp-Bk-RGt" id="N9n-6G-zYH"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -725,7 +724,7 @@
                                 </connections>
                             </button>
                             <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fns-Xs-a96">
-                                <rect key="frame" x="536" y="95" width="31" height="19"/>
+                                <rect key="frame" x="534" y="95" width="31" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Stop" bezelStyle="roundedRect" imagePosition="overlaps" alignment="left" enabled="NO" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="sK2-Bq-AC7">
                                     <behavior key="behavior" lightByContents="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
@@ -735,7 +734,7 @@
                                 </connections>
                             </button>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pok-ah-jJN">
-                                <rect key="frame" x="20" y="20" width="114" height="67"/>
+                                <rect key="frame" x="20" y="20" width="84" height="67"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ymD-nj-nxE">
                                         <rect key="frame" x="0.0" y="50" width="57" height="17"/>
@@ -796,7 +795,7 @@
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GjG-HL-7Mg">
-                                        <rect key="frame" x="0.0" y="0.0" width="114" height="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="17"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="edj-7f-1Zh">
                                                 <rect key="frame" x="0.0" y="0.0" width="75" height="17"/>
@@ -827,42 +826,11 @@
                                                     <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
                                             </stackView>
-                                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x6f-A7-WG5">
-                                                <rect key="frame" x="83" y="0.0" width="31" height="17"/>
-                                                <subviews>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3G-v9-pqh">
-                                                        <rect key="frame" x="-2" y="0.0" width="18" height="17"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="%:" id="mw6-oO-QT7">
-                                                            <font key="font" metaFont="systemThin" size="13"/>
-                                                            <color key="textColor" red="0.91158845590000004" green="0.97292164029999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1f-ud-GL1">
-                                                        <rect key="frame" x="20" y="0.0" width="13" height="17"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0" id="lsO-sh-Ooi">
-                                                            <font key="font" metaFont="systemThin" size="13"/>
-                                                            <color key="textColor" red="0.8239158472" green="0.97680455450000003" blue="0.38995682780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                </subviews>
-                                                <visibilityPriorities>
-                                                    <integer value="1000"/>
-                                                    <integer value="1000"/>
-                                                </visibilityPriorities>
-                                                <customSpacing>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                </customSpacing>
-                                            </stackView>
                                         </subviews>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
-                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
@@ -883,11 +851,12 @@
                             <constraint firstAttribute="trailing" secondItem="npe-Ks-dgN" secondAttribute="trailing" constant="24" id="1tc-lM-3ys"/>
                             <constraint firstItem="FQp-Bk-RGt" firstAttribute="top" secondItem="8lo-yc-3xz" secondAttribute="top" constant="20" id="7tR-Ei-eiG"/>
                             <constraint firstItem="fns-Xs-a96" firstAttribute="bottom" secondItem="FQp-Bk-RGt" secondAttribute="bottom" id="Aqz-y1-Fvv"/>
-                            <constraint firstAttribute="trailing" secondItem="fns-Xs-a96" secondAttribute="trailing" constant="20" id="B5d-HL-vEa"/>
                             <constraint firstItem="pok-ah-jJN" firstAttribute="leading" secondItem="8lo-yc-3xz" secondAttribute="leading" constant="20" id="BrR-2w-t1u"/>
                             <constraint firstItem="npe-Ks-dgN" firstAttribute="top" secondItem="FQp-Bk-RGt" secondAttribute="top" id="EJa-Ea-Abs"/>
                             <constraint firstAttribute="bottom" secondItem="pok-ah-jJN" secondAttribute="bottom" constant="20" id="NMH-Te-KBP"/>
-                            <constraint firstItem="npe-Ks-dgN" firstAttribute="leading" secondItem="FQp-Bk-RGt" secondAttribute="trailing" constant="8" id="OkI-ho-QsZ"/>
+                            <constraint firstItem="npe-Ks-dgN" firstAttribute="leading" secondItem="FQp-Bk-RGt" secondAttribute="trailing" constant="8" symbolic="YES" id="OkI-ho-QsZ"/>
+                            <constraint firstItem="fns-Xs-a96" firstAttribute="leading" secondItem="FQp-Bk-RGt" secondAttribute="trailing" constant="8" symbolic="YES" id="Rg9-6w-Ix7"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fns-Xs-a96" secondAttribute="trailing" constant="20" id="VHh-NR-Evq"/>
                             <constraint firstItem="FQp-Bk-RGt" firstAttribute="leading" secondItem="8lo-yc-3xz" secondAttribute="leading" constant="20" id="baJ-e9-shb"/>
                             <constraint firstItem="pok-ah-jJN" firstAttribute="top" secondItem="FQp-Bk-RGt" secondAttribute="bottom" constant="8" id="pHe-fJ-3XC"/>
                         </constraints>
