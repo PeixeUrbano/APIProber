@@ -2,4 +2,4 @@
 
 Simple macOS app to check for error rates on HTTP APIs.
 
-*Full readme forthcomming*
+**This is a work in progress**
