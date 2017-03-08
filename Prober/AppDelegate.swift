@@ -110,6 +110,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func fire(_ sender: Any) {
+        
+        guard !urlField.stringValue.isEmpty else { return }
+        
         totalAttempts = 0
         errors = 0
         success = 0
@@ -130,11 +133,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func probe() {
-        savedInput = urlField.stringValue
         
-        if shouldStop { return }
+        guard !shouldStop, let url = URL(string: urlField.stringValue) else { return }
+        
+        savedInput = urlField.stringValue
         totalAttempts += 1
-        let url = URL(string: urlField.stringValue)!
         
         let listResource = Resource<JSONDict>(url: url, parse: { data in
             
